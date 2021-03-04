@@ -3,3 +3,8 @@ Part 1:
 * Types, and variables
 * Control Flow
 * Objects, Namespaces, Enums
+
+Part 2:
+* Templates
+* Memory Management
+* Constant Expressions
