@@ -124,3 +124,51 @@ int main(){
   // 12
 }
 ```
+
+# Problems
+### 977. Squares of a Sorted Array
+```cpp
+    std::vector<int> sortedSquares(std::vector<int>& nums) {
+        std::transform(nums.begin(),nums.end(),nums.begin(),nums.begin(),std::multiplies<int>());
+        std::sort(nums.begin(),nums.end());
+        return nums;
+    }
+```
+### 4. Median of Two Sorted Arrays
+```cpp
+
+double findMedianSortedArrays(const std::vector<int>& nums1,const std::vector<int>& nums2) {
+        std::vector<int> vec(nums1.size() + nums2.size());
+        std::merge(nums1.begin(),nums1.end(),nums2.begin(),nums2.end(),vec.begin());
+        return (vec.size() % 2 == 0) ? (vec[vec.size()/2] + vec[(vec.size()/2) - 1])/2.0 : vec[(vec.size()/2)];
+    }
+```
+
+### Tests
+```cpp
+#include <vector>
+#include <algorithm>
+#include <cassert>
+
+std::vector<int> sortedSquares(std::vector<int> nums) {
+    return {};
+}
+
+double findMedianSortedArrays(const std::vector<int>& nums1,const std::vector<int>& nums2){
+    return 0;
+}
+
+
+int main(){
+    
+
+    // Tests #1
+    std::vector<int> a{0,1,9,16,100};
+    std::vector<int> b{4,9,9,49,121};
+    assert(sortedSquares({-4,-1,0,3,10}) == a);
+    assert(sortedSquares({-7,-3,2,3,11}) == b);
+    // Tests #2
+    assert(findMedianSortedArrays({1,3},{2}) == 2.000);
+    assert(findMedianSortedArrays({1,2},{3,4}) == 2.5);
+}
+```
